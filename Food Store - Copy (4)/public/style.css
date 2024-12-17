@@ -1,0 +1,534 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: hsl(0, 29%, 95%); /* Black background */
+    color: white;
+    overflow-x: hidden;  /* NA*/
+    height: 100vh;/* NA */
+}
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;/* NA*/
+    background-color: #1a1616;/* NA*/
+    position: fixed;
+    top: 0;/* NA*/
+    width: 100%; /* NA*/
+    z-index: 1000; /* NA*/
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo img {
+    width: 30px;        /* Adjust icon size */
+    height: auto;       /* Maintain aspect ratio */
+    margin-right: 10px; /* Space between icon and text */
+}
+
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+}
+
+.navbar .nav-links li {
+    margin: 0 1rem;
+}
+
+.navbar .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.navbar .nav-links .btn {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 1px solid #fff;
+}
+
+.navbar .login {
+    
+    background: transparent;
+}
+
+.navbar .register {
+    background: #e07c11;
+    color: #000;
+    border: none;
+}
+
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 2rem;
+    background: #000;
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin-bottom: 2rem;
+    color: #ccc;
+}
+
+.hero-content .btn {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    color: hsl(0, 13%, 13%);
+    background-color: hsl(210, 22%, 93%);
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.hero-content .btn:hover {
+    background-color: #e06c00;
+}
+
+.hero-image {
+    max-width: 45%;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 50%;
+    border: 5px solid #0e0e0e;
+    box-shadow: 0 5px 15px rgba(11, 10, 10, 0.2);
+}
+
+/* Form Container (Centering Login and Register) */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    text-align: center;
+}
+
+.form-container form {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.form-container h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.form-container label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #444;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+}
+
+.form-container button {
+    padding: 10px;
+    background-color: #ffc107;
+    color: #000;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background-color: #e0a800;
+}
+
+/* Navbar Styles */
+.nav-links li a.active {
+  color: #ff8c00;
+}
+
+.btn {
+  border: 1px solid #ff8c00;
+  padding: 5px 10px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.btn.login:hover,
+.btn.register:hover {
+  background-color: #ff8c00;
+}
+
+/* About Page Intro Section */
+/* About Page Intro Section */
+.about-intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f8f8;
+    height: 150px; /* Adjust height as needed for centering */
+    margin-bottom: 20px; /* Add spacing below the intro */
+    padding: 0 20px; /* Add padding for smaller screens */
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    line-height: 1.6; /* Improves readability */
+  }
+  
+/* About Section Styles */
+.about-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 40px 20px;
+  background-color: #fff;
+  gap: 20px;
+}
+
+.about-content {
+    background-color: #160404;
+    border: 1px solid #ddd;
+    border-radius: 8px; 
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    max-width: 600px; 
+    margin: 20px auto; 
+  }
+  
+.about-content h1 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #fcf8f4;
+}
+
+.about-content p {
+  margin: 10px 0;
+  color: #eff3f7;
+  line-height: 1.5;
+}
+
+.about-content .btn.read-more {
+  display: inline-block;
+  margin-top: 15px;
+  background-color: #d6780c;  
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.about-content .btn.read-more:hover {
+  background-color: #f0ece9;
+}
+
+
+.about-image img {
+    width: 500px;  
+    height: 300px;      
+         
+    margin-right: 10px;
+}
+
+/* Recipe Page */
+/* Recipe Page */
+.recipes {
+    text-align: center;
+    padding: 40px 20px; /* Increase top padding to give space at the top */
+    background-color: #f8f8f8;
+    margin-top: 60px;  /* Space between header and recipe section */
+}
+
+.recipes h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.recipe-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 0;
+}
+
+.recipe-items {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 20px;
+}
+
+.recipe-item {
+    flex: 0 0 auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    width: 150px;
+    text-align: center;
+}
+
+.recipe-item img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.recipe-item p {
+    margin: 10px 0 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.recipe-item span {
+    color: #777;
+}
+
+.arrow-btn {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.5rem;
+}
+ /* Blogs Section */
+ /* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    margin-top: 10px; /* Added margin-top to bring the navbar slightly down */
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .logo img {
+    width: 30px;        /* Adjust icon size */
+    height: auto;       /* Maintain aspect ratio */
+    margin-right: 10px; /* Space between icon and text */
+}
+
+/* Blog Section */
+.blogs {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    background-color: #fff; /* Change from black to white */
+}
+
+.blogs-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.blogs-header .icon {
+    font-size: 2rem;
+    color: #e07c11;
+}
+
+.blogs-header p {
+    color: #666;
+    font-size: 1rem;
+}
+
+.blog-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.blog-card {
+    background-color: #ece0e0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: white;
+    position: relative;
+}
+
+.blog-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.blog-card .content {
+    padding: 1rem;
+}
+
+.blog-card .content h3 {
+    font-size: 1.5rem;
+    color: #e07c11;
+    margin-bottom: 0.5rem;
+}
+
+.blog-card .content p {
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.blog-card .date {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #130e0a;
+    color: #fff;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.9rem;
+    border-radius: 4px;
+}
+
+/* Contact Section */
+.contact-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 10%;
+    background-color: #e8bf1b;
+}
+
+.contact-form {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.contact-form h2 {
+    font-size: 2rem;
+    color: #0a0702;
+    margin-bottom: 20px;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form label {
+    margin: 10px 0 5px;
+    font-size: 1rem;
+}
+
+.contact-form input, .contact-form textarea {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.contact-form button {
+    background-color: #ebe6dd;
+    color: #1c1818;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #ff8700;
+}
+
+.contact-image img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+#cart {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #1e0303;
+    border: 1px solid #ccc;
+  }
+  
+  #cart-items {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #cart-items li {
+    margin-bottom: 10px;
+  }
+  
+  button.add-to-cart {
+    background-color: #4CAF50;
+    color: rgb(12, 11, 11);
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button.add-to-cart:hover {
+    background-color: #45a049;
+  }
+  
+  button#checkout-btn {
+    padding: 10px;
+    background-color: #007BFF;
+    color: rgb(25, 4, 4);
+    border: none;
+    cursor: pointer;
+  }
+  
+  button#checkout-btn:hover {
+    background-color: #0056b3;
+  }
+  #order-confirmation{
+    background-color: #000;
+    text-decoration: #000;
+  }
