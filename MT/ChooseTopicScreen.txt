@@ -1,0 +1,49 @@
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, FlatList, ImageBackground } from 'react-native';
+
+const topics = [
+  { id: '1', title: 'Reduce Stress', color: '#8E9BFD', image: require('../assets/reduce_stress.png') },
+  { id: '2', title: 'Improve Performance', color: '#FF6B6B', image: require('../assets/improve_performance.png') },
+  { id: '3', title: 'Increase Happiness', color: '#FFA07A', image: require('../assets/increase_happiness.png') },
+  { id: '4', title: 'Reduce Anxiety', color: '#FFD479', image: require('../assets/reduce_anxiety.png') },
+  { id: '5', title: 'Personal Growth', color: '#6FCF97', image: require('../assets/personal_growth.png') },
+  { id: '6', title: 'Better Sleep', color: '#555D7A', image: require('../assets/better_sleep.png') },
+];
+
+const ChooseTopicScreen = ({ navigation }) => {
+  const renderItem = ({ item }) => (
+    <TouchableOpacity style={[styles.card, { backgroundColor: item.color }]} onPress={() => alert(`Selected: ${item.title}`)}>
+      <ImageBackground source={item.image} style={styles.image} resizeMode="contain">
+        <Text style={styles.cardText}>{item.title}</Text>
+      </ImageBackground>
+    </TouchableOpacity>
+  );
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.header}>What Brings You</Text>
+      <Text style={styles.subHeader}>to Silent Moon?</Text>
+      <Text style={styles.description}>Choose a topic to focus on:</Text>
+      <FlatList 
+        data={topics}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id}
+        numColumns={2}
+        contentContainerStyle={styles.grid}
+      />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: { flex: 1, padding: 20, backgroundColor: '#FFF' },
+  header: { fontSize: 26, fontWeight: 'bold', color: '#333' },
+  subHeader: { fontSize: 26, fontWeight: '300', color: '#333' },
+  description: { fontSize: 16, color: '#999', marginVertical: 10 },
+  grid: { justifyContent: 'center' },
+  card: { flex: 1, margin: 10, borderRadius: 15, overflow: 'hidden', height: 160 },
+  image: { flex: 1, justifyContent: 'flex-end', padding: 10 },
+  cardText: { color: '#FFF', fontSize: 16, fontWeight: 'bold' },
+});
+
+export default ChooseTopicScreen;

@@ -1,0 +1,114 @@
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Image, FlatList } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+
+const courseDetails = {
+  title: "Happy Morning",
+  description: "Ease the mind into a restful night’s sleep with these deep, ambient tones.",
+  favorites: "24.234",
+  listening: "34.234",
+  image: "https://your-image-url.com/happy-morning.png",
+  narrators: ["Male Voice", "Female Voice"],
+  tracks: [
+    { id: "1", title: "Focus Attention", duration: "10 MIN" },
+    { id: "2", title: "Body Scan", duration: "5 MIN" },
+    { id: "3", title: "Making Happiness", duration: "3 MIN" }
+  ]
+};
+
+const CourseDetailsScreen = ({ navigation }) => {
+  const [selectedNarrator, setSelectedNarrator] = useState("Male Voice");
+
+  return (
+    <View style={styles.container}>
+      {/* Header with Image */}
+      <View style={styles.header}>
+        <Image source={{ uri: courseDetails.image }} style={styles.courseImage} />
+        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+          <Ionicons name="arrow-back" size={24} color="#333" />
+        </TouchableOpacity>
+        <View style={styles.topRightIcons}>
+          <Ionicons name="heart-outline" size={24} color="#333" style={styles.icon} />
+          <Ionicons name="download-outline" size={24} color="#333" />
+        </View>
+      </View>
+
+      {/* Course Details */}
+      <Text style={styles.title}>{courseDetails.title}</Text>
+      <Text style={styles.subtitle}>COURSE</Text>
+      <Text style={styles.description}>{courseDetails.description}</Text>
+
+      {/* Favorites & Listening */}
+      <View style={styles.stats}>
+        <View style={styles.statItem}>
+          <Ionicons name="heart" size={18} color="#ff5a5f" />
+          <Text style={styles.statText}>{courseDetails.favorites} Favorites</Text>
+        </View>
+        <View style={styles.statItem}>
+          <Ionicons name="headset" size={18} color="#5a9cff" />
+          <Text style={styles.statText}>{courseDetails.listening} Listening</Text>
+        </View>
+      </View>
+
+      {/* Narrator Selection */}
+      <Text style={styles.narratorTitle}>Pick a Narrator</Text>
+      <View style={styles.narratorSelection}>
+        {courseDetails.narrators.map((narrator) => (
+          <TouchableOpacity
+            key={narrator}
+            style={[styles.narratorButton, selectedNarrator === narrator && styles.selectedNarrator]}
+            onPress={() => setSelectedNarrator(narrator)}
+          >
+            <Text style={[styles.narratorText, selectedNarrator === narrator && styles.selectedNarratorText]}>
+              {narrator}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+
+      {/* Track List */}
+      <FlatList
+        data={courseDetails.tracks}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <View style={styles.trackItem}>
+            <TouchableOpacity style={styles.playButton}>
+              <Ionicons name="play-circle" size={28} color={item.id === "1" ? "#8E9BFD" : "#CCC"} />
+            </TouchableOpacity>
+            <View>
+              <Text style={styles.trackTitle}>{item.title}</Text>
+              <Text style={styles.trackDuration}>{item.duration}</Text>
+            </View>
+          </View>
+        )}
+      />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: '#FFF', padding: 20 },
+  header: { position: 'relative', alignItems: 'center' },
+  courseImage: { width: '100%', height: 200, borderRadius: 20 },
+  backButton: { position: 'absolute', left: 15, top: 15, backgroundColor: '#FFF', borderRadius: 20, padding: 10 },
+  topRightIcons: { position: 'absolute', right: 15, top: 15, flexDirection: 'row' },
+  icon: { marginRight: 15 },
+  title: { fontSize: 24, fontWeight: 'bold', color: '#333', marginTop: 10 },
+  subtitle: { fontSize: 14, color: '#999', marginBottom: 5 },
+  description: { fontSize: 16, color: '#555', marginBottom: 15 },
+  stats: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: 20 },
+  statItem: { flexDirection: 'row', alignItems: 'center' },
+  statText: { fontSize: 14, color: '#666', marginLeft: 5 },
+  narratorTitle: { fontSize: 18, fontWeight: 'bold', marginTop: 20 },
+  narratorSelection: { flexDirection: 'row', marginTop: 10 },
+  narratorButton: { flex: 1, padding: 10, alignItems: 'center', borderBottomWidth: 2, borderBottomColor: '#DDD' },
+  selectedNarrator: { borderBottomColor: '#8E9BFD' },
+  narratorText: { fontSize: 16, color: '#888' },
+  selectedNarratorText: { color: '#8E9BFD', fontWeight: 'bold' },
+  trackItem: { flexDirection: 'row', alignItems: 'center', paddingVertical: 10, borderBottomWidth: 1, borderBottomColor: '#EEE' },
+  playButton: { marginRight: 15 },
+  trackTitle: { fontSize: 16, fontWeight: '500', color: '#333' },
+  trackDuration: { fontSize: 14, color: '#888' },
+});
+
+export default CourseDetailsScreen;
