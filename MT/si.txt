@@ -1,0 +1,25 @@
+import React from 'react';
+import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+
+const LoginScreen = ({ navigation }) => {
+  return (
+    <LinearGradient colors={["#FFFFFF", "#F8F8F8"]} style={styles.container}>
+      <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+        <Text style={styles.backText}>{'<-'}</Text>
+      </TouchableOpacity>
+      <Text style={styles.title}>Welcome Back!</Text>
+      <TextInput style={styles.input} placeholder="Email address" placeholderTextColor="#999" />
+      <TextInput style={styles.input} placeholder="Password" placeholderTextColor="#999" secureTextEntry />
+      <TouchableOpacity style={styles.loginButton}>
+        <Text style={styles.loginButtonText}>LOG IN</Text>
+      </TouchableOpacity>
+      <Text style={styles.forgotPassword}>Forgot Password?</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+        <Text style={styles.switchText}>Don't have an account? <Text style={styles.switchLink}>SIGN UP</Text></Text>
+      </TouchableOpacity>
+    </LinearGradient>
+  );
+};
+
+export default LoginScreen;

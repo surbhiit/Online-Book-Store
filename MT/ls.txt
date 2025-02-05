@@ -1,0 +1,27 @@
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+
+const AuthSelectionScreen = ({ navigation }) => {
+  return (
+    <LinearGradient colors={["#FFFFFF", "#F8F8F8"]} style={styles.container}>
+      <Text style={styles.title}>Welcome to Meditation App</Text>
+      <TouchableOpacity style={styles.signupButton} onPress={() => navigation.navigate('SignUp')}>
+        <Text style={styles.buttonText}>SIGN UP</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.loginButton} onPress={() => navigation.navigate('Login')}>
+        <Text style={styles.buttonText}>LOG IN</Text>
+      </TouchableOpacity>
+    </LinearGradient>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: { flex: 1, alignItems: 'center', justifyContent: 'center' },
+  title: { fontSize: 24, fontWeight: 'bold', color: '#333', marginBottom: 40 },
+  signupButton: { backgroundColor: '#6C63FF', padding: 15, borderRadius: 30, width: '80%', alignItems: 'center', marginBottom: 10 },
+  loginButton: { backgroundColor: '#333', padding: 15, borderRadius: 30, width: '80%', alignItems: 'center' },
+  buttonText: { color: '#FFF', fontSize: 16, fontWeight: 'bold' },
+});
+
+export default AuthSelectionScreen;

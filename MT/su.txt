@@ -1,0 +1,37 @@
+import React from 'react';
+import { View, Text, TouchableOpacity, TextInput, StyleSheet } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
+
+const SignUpScreen = ({ navigation }) => {
+  return (
+    <LinearGradient colors={["#FFFFFF", "#F8F8F8"]} style={styles.container}>
+      <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+        <Text style={styles.backText}>{'<-'}</Text>
+      </TouchableOpacity>
+      <Text style={styles.title}>Create Your Account</Text>
+      <TextInput style={styles.input} placeholder="Name" placeholderTextColor="#999" />
+      <TextInput style={styles.input} placeholder="Email address" placeholderTextColor="#999" />
+      <TextInput style={styles.input} placeholder="Password" placeholderTextColor="#999" secureTextEntry />
+      <TouchableOpacity style={styles.signupButton}>
+        <Text style={styles.signupButtonText}>GET STARTED</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+        <Text style={styles.switchText}>Already have an account? <Text style={styles.switchLink}>SIGN IN</Text></Text>
+      </TouchableOpacity>
+    </LinearGradient>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: { flex: 1, alignItems: 'center', justifyContent: 'center' },
+  backButton: { position: 'absolute', top: 50, left: 20 },
+  backText: { fontSize: 24, color: '#333' },
+  title: { fontSize: 24, fontWeight: 'bold', color: '#333', marginBottom: 20 },
+  input: { width: '80%', backgroundColor: '#F8F8F8', padding: 15, borderRadius: 10, marginBottom: 10 },
+  signupButton: { backgroundColor: '#6C63FF', padding: 15, borderRadius: 30, width: '80%', alignItems: 'center', marginBottom: 10 },
+  signupButtonText: { color: '#FFF', fontSize: 16, fontWeight: 'bold' },
+  switchText: { color: '#999' },
+  switchLink: { color: '#6C63FF', fontWeight: 'bold' },
+});
+
+export default SignUpScreen;
