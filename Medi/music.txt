@@ -1,0 +1,113 @@
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, Slider, StyleSheet, Image } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+
+const MusicScreen = ({ navigation }) => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState(1.5);
+  const totalDuration = 45;
+
+  const togglePlayPause = () => {
+    setIsPlaying(!isPlaying);
+  };
+
+  return (
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.closeButton} onPress={() => navigation.goBack()}>
+        <Ionicons name="close" size={30} color="black" />
+      </TouchableOpacity>
+
+      <View style={styles.topIcons}>
+        <Ionicons name="heart-outline" size={30} color="gray" />
+        <Ionicons name="download-outline" size={30} color="gray" />
+      </View>
+
+      <Text style={styles.title}>Focus Attention</Text>
+      <Text style={styles.subtitle}>7 DAYS OF CALM</Text>
+
+      <View style={styles.controls}>
+        <TouchableOpacity>
+          <Ionicons name="play-back" size={30} color="gray" />
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.playPauseButton} onPress={togglePlayPause}>
+          <Ionicons name={isPlaying ? "pause" : "play"} size={40} color="white" />
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <Ionicons name="play-forward" size={30} color="gray" />
+        </TouchableOpacity>
+      </View>
+
+      <Slider
+        style={styles.slider}
+        minimumValue={0}
+        maximumValue={totalDuration}
+        value={progress}
+        onValueChange={setProgress}
+      />
+      
+      <View style={styles.timeContainer}>
+        <Text>01:30</Text>
+        <Text>45:00</Text>
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#f9f6f3',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  closeButton: {
+    position: 'absolute',
+    top: 50,
+    left: 20,
+  },
+  topIcons: {
+    flexDirection: 'row',
+    position: 'absolute',
+    top: 50,
+    right: 20,
+    gap: 15,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#333',
+    marginTop: 80,
+  },
+  subtitle: {
+    fontSize: 14,
+    color: 'gray',
+  },
+  controls: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 40,
+    gap: 40,
+  },
+  playPauseButton: {
+    backgroundColor: 'black',
+    width: 70,
+    height: 70,
+    borderRadius: 35,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  slider: {
+    width: '80%',
+    marginTop: 20,
+  },
+  timeContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '80%',
+    marginTop: 10,
+  },
+});
+
+export default MusicScreen;

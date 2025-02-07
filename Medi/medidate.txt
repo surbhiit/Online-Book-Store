@@ -1,0 +1,95 @@
+import React from "react";
+import { View, Text, TouchableOpacity, FlatList, Image, StyleSheet } from "react-native";
+import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
+import { useNavigation } from "@react-navigation/native";
+
+const categories = [
+  { id: "1", name: "All", icon: "th-large", selected: true },
+  { id: "2", name: "My", icon: "heart" },
+  { id: "3", name: "Anxious", icon: "frown" },
+  { id: "4", name: "Sleep", icon: "moon" },
+  { id: "5", name: "Kids", icon: "child" },
+];
+
+const meditations = [
+  { id: "1", title: "Daily Calm", subtitle: "APR 30 • PAUSE PRACTICE", image: require("../assets/daily-calm.png") },
+  { id: "2", title: "7 Days of Calm", image: require("../assets/7-days-calm.png") },
+  { id: "3", title: "Anxiety Release", image: require("../assets/anxiety-release.png") },
+];
+
+const MeditateScreen = () => {
+  const navigation = useNavigation();
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Meditate</Text>
+      <Text style={styles.subtitle}>
+        we can learn how to recognize when our minds are doing their normal everyday acrobatics.
+      </Text>
+
+      {/* Categories */}
+      <View style={styles.categoryContainer}>
+        {categories.map((item) => (
+          <TouchableOpacity key={item.id} style={[styles.category, item.selected && styles.selectedCategory]}>
+            <FontAwesome5 name={item.icon} size={20} color={item.selected ? "white" : "gray"} />
+            <Text style={[styles.categoryText, item.selected && { color: "white" }]}>{item.name}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+
+      {/* Meditation List */}
+      <FlatList
+        data={meditations}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <TouchableOpacity style={styles.meditationCard}>
+            <Image source={item.image} style={styles.meditationImage} />
+            <Text style={styles.meditationTitle}>{item.title}</Text>
+            {item.subtitle && <Text style={styles.meditationSubtitle}>{item.subtitle}</Text>}
+          </TouchableOpacity>
+        )}
+        numColumns={2}
+      />
+
+      {/* Bottom Navigation */}
+      <View style={styles.bottomNav}>
+        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+          <FontAwesome5 name="home" size={24} color="gray" />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <FontAwesome5 name="moon" size={24} color="gray" />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.activeIcon}>
+          <MaterialIcons name="spa" size={28} color="white" />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <FontAwesome5 name="music" size={24} color="gray" />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <FontAwesome5 name="user" size={24} color="gray" />
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
+
+export default MeditateScreen;
+
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: "#fff", padding: 20 },
+  title: { fontSize: 24, fontWeight: "bold", textAlign: "center", marginVertical: 10 },
+  subtitle: { textAlign: "center", color: "gray", marginBottom: 20 },
+
+  categoryContainer: { flexDirection: "row", justifyContent: "space-around", marginBottom: 20 },
+  category: { alignItems: "center", padding: 10, borderRadius: 20, backgroundColor: "#f0f0f0" },
+  selectedCategory: { backgroundColor: "#7F7FFF" },
+  categoryText: { fontSize: 12, color: "gray", marginTop: 5 },
+
+  meditationCard: { flex: 1, margin: 5, padding: 10, backgroundColor: "#f9f9f9", borderRadius: 10 },
+  meditationImage: { width: "100%", height: 120, borderRadius: 10 },
+  meditationTitle: { fontSize: 16, fontWeight: "bold", marginTop: 5 },
+  meditationSubtitle: { fontSize: 12, color: "gray" },
+
+  bottomNav: { flexDirection: "row", justifyContent: "space-around", paddingVertical: 15, backgroundColor: "#fff" },
+  activeIcon: { backgroundColor: "#7F7FFF", padding: 10, borderRadius: 30 },
+});
