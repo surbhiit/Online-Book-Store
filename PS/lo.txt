@@ -1,0 +1,77 @@
+import React from 'react';
+import { View, Text, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
+const ProfileScreen = () => {
+  const navigation = useNavigation();
+
+  return (
+    <View style={styles.container}>
+      <Image source={{ uri: 'https://via.placeholder.com/100' }} style={styles.profileImage} />
+      <Text style={styles.name}>John Doe</Text>
+      <Text style={styles.email}>johndoe@example.com</Text>
+      
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Settings')}>
+        <Text style={styles.buttonText}>Settings</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
+        <Text style={styles.buttonText}>Go to Home</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.logoutButton} onPress={() => console.log('Logging out')}>
+        <Text style={styles.logoutText}>Logout</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f7f7f7',
+  },
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginBottom: 20,
+  },
+  name: {
+    fontSize: 22,
+    fontWeight: 'bold',
+  },
+  email: {
+    fontSize: 16,
+    color: 'gray',
+    marginBottom: 20,
+  },
+  button: {
+    backgroundColor: '#4A90E2',
+    padding: 10,
+    borderRadius: 5,
+    marginTop: 10,
+    width: 200,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+  },
+  logoutButton: {
+    marginTop: 20,
+    backgroundColor: '#d9534f',
+    padding: 10,
+    borderRadius: 5,
+    width: 200,
+    alignItems: 'center',
+  },
+  logoutText: {
+    color: 'white',
+    fontSize: 16,
+  },
+});
+
+export default ProfileScreen;
